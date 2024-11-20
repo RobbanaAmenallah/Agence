@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+
+
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="#">Login</a></span>
+                <h3>Register</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-lg-6">
+    <form [formGroup]="LoginForm" (ngSubmit)="loginUser()">
+        <div class="col-lg-12">
+
+            <label for="email">Email Address </label>
+            <input type="text" placeholder="Your E-mail..." formControlName="email"><br>
+            @if(email?.touched && email?.errors?.['required']){<p class="small text-danger">Email is required</p>}
+            @if(email?.touched && email?.errors?.['email']){<p class="small text-danger">Must be Email</p>}
+            <label for="password">Mot De Passe</label>
+            <input type="password" placeholder="Mot De Passe..." formControlName="password" class="form-control">
+            <div *ngIf="password?.touched">
+                <p *ngIf="password?.errors?.['required']" class="small text-danger">Password is required</p>
+                <p *ngIf="password?.errors?.['minlength']" class="small text-danger">Password must be at least 6 characters</p>
+            </div>
+
+            <button type="submit">Envoyer</button>
+        </div>
+    </form>
+</div>
+
+<app-footer></app-footer>

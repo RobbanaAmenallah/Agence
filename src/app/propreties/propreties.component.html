@@ -1,0 +1,75 @@
+<app-navbar></app-navbar>
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="#">Home</a> / Properties</span>
+                <h3>Properties</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section properties">
+    <div class="container">
+        <ul class="properties-filter">
+            <li>
+                <a class="is_active" (click)="displayByCategory('0')">All</a>
+            </li>
+            <li *ngFor="let category of categoriesList">
+                <a (click)="displayByCategory(category._id)">{{ category.name }}</a>
+            </li>
+        </ul>
+
+        <div class="row properties-box">
+            <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items" *ngFor="let property of displayedList">
+                <div class="item">
+                    <a routerLink="/property-details"><img src="assets/images/property-06.jpg" alt="Property Image"></a>
+                    <span class="category">{{ property.name }}</span>
+                    <h6>{{ property.price | currency }}</h6> <!-- Formatting price as currency -->
+                    <h4><a routerLink="/property-details">{{ property.title }}</a></h4>
+                    <ul>
+                        <li>Bedrooms: <span>{{ property.bedrooms }}</span></li>
+                        <li>Bathrooms: <span>{{ property.bathrooms }}</span></li>
+                        <li>Area: <span>{{ property.area }} sq ft</span></li> <!-- Added unit to area -->
+                        <li>Floor: <span>{{ property.floor }}</span></li>
+                        <li>Parking: <span>{{ property.parking }}</span></li>
+                    </ul>
+                    <div class="main-button">
+                        <button (click)="scheduleVisit(property)" class="btn btn-primary">Schedule a Visit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Schedule Form -->
+        <div *ngIf="showScheduleForm" class="schedule-form">
+            <h2>Schedule a Visit for {{ selectedProperty?.title }}</h2> <!-- Changed to title for better context -->
+            <label for="date">Date:</label>
+            <input type="date" [(ngModel)]="scheduleDate" id="date" required>
+            
+            <label for="time">Time:</label>
+            <input type="time" [(ngModel)]="scheduleTime" id="time" required>
+            
+            <div class="form-buttons">
+                <button (click)="confirmSchedule()" class="btn btn-success">Confirm Schedule</button>
+                <button (click)="cancelSchedule()" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+        <!-- End of Schedule Form -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li><a href="#">1</a></li>
+                    <li><a class="is_active" href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">>></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

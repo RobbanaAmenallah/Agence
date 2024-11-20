@@ -1,0 +1,56 @@
+body {
+    background-color: #121212; /* Fond noir */
+    color: #fff; /* Texte blanc */
+    font-family: Arial, sans-serif;
+    }
+    
+    .col-lg-6 {
+    margin: 50px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #ff7e00, #ffffff); /* Dégradé orange à noir */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    form {
+    display: flex;
+    flex-direction: column;
+    }
+    
+    label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    }
+    
+    input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+    color: #fff; /* Texte blanc */
+    transition: background-color 0.3s ease;
+    }
+    
+    input::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Couleur des placeholders */
+    }
+    
+    input:focus {
+    background-color: rgba(255, 255, 255, 0.2); /* Changement de couleur au focus */
+    outline: none; /* Retire le contour par défaut */
+    }
+    
+    button {
+    padding: 10px;
+    background-color: #ff7e00; /* Couleur orange */
+    color: #fff; /* Texte blanc */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+    background-color: #e67e22; /* Couleur orange plus foncé au survol */
+    }

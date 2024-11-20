@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+
+<div class="page-heading header-text">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <span class="breadcrumb"><a href="#">Home</a> / Appointments</span>
+        <h3>Manage Appointments</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="appointments-page section">
+  <div class="container">
+    <div class="section-heading">
+      <h6>| Upcoming Appointments</h6>
+      <h2>Your Scheduled Appointments</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let appointment of appointments">
+              <td>{{ appointment.date | date: 'mediumDate' }}</td>
+              <td>{{ appointment.time }}</td>
+              <td>{{ appointment.status }}</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

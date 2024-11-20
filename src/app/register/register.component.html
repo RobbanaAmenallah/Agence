@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<div class="page-heading header-text">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <span class="breadcrumb"><a href="#">Login</a></span>
+        <h3>Register</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-lg-6 mx-auto">
+    <form [formGroup]="RegisterForm" (ngSubmit)="addUser()">
+      <div class="col-lg-12">
+        <label for="fullname">Full Name</label>
+        <input type="text" placeholder="Your Name..." formControlName="fullname" class="form-control">
+        <div *ngIf="fullname?.touched">
+          <p *ngIf="fullname?.errors?.['required']" class="small text-danger">Full name is required</p>
+          <p *ngIf="fullname?.errors?.['minlength']" class="small text-danger">Full name must contain at least 3 characters</p>
+          <p *ngIf="fullname?.errors?.['pattern']" class="small text-danger">Full name should be alphabetic</p>
+        </div>
+        
+        <label for="email">Email Address</label>
+        <input type="text" placeholder="Your E-mail..." formControlName="email" class="form-control">
+        <div *ngIf="email?.touched">
+          <p *ngIf="email?.errors?.['required']" class="small text-danger">Email is required</p>
+          <p *ngIf="email?.errors?.['email']" class="small text-danger">Must be a valid email</p>
+        </div>
+        
+        <label for="mdp">Mot De Passe</label>
+<input type="password" placeholder="Mot De Passe..." formControlName="password" class="form-control"> <!-- Change mdp to password -->
+
+<div *ngIf="password?.touched"> <!-- Change mdp to password -->
+  <p *ngIf="password?.errors?.['required']" class="small text-danger">Password is required</p>
+  <p *ngIf="password?.errors?.['minlength']" class="small text-danger">Password must be at least 6 characters</p> <!-- Change mdp to password -->
+</div>
+
+<label for="cmdp">Confirm Mot De Passe</label>
+<input type="password" placeholder="Confirm Mot De Passe..." formControlName="cmdp" class="form-control">
+<div *ngIf="cmdp?.touched">
+  <p *ngIf="cmdp?.errors?.['required']" class="small text-danger">Confirmation password is required</p>
+  <p *ngIf="cmdp?.errors?.['minlength']" class="small text-danger">Password must be at least 6 characters</p>
+  <p *ngIf="cmdp?.value != password?.value" class="small text-danger">
+    Passwords mch kif kif</p>
+</div>
+        
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="RegisterForm.invalid">Envoyer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-footer></app-footer>
